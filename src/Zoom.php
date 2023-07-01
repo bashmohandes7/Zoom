@@ -84,42 +84,18 @@ class Zoom
         }
     }
 
-    public function create_meeting($meeting_data = [])
+    public function createMeeting($meeting_data = [])
     {
         $client = new Client(['base_uri' => self::zoomUrl]);
 
         $arrToken = $this->getAccessToken();
         $accessToken = $arrToken->access_token;
-        $json = [
-            'topic'            =>  $meeting_data['topic']??'General Talk', // topic
-            'type'            =>  2,
-            'start_time'    => $meeting_data['start_time'] ?? date('Y-m-dTh:i:00') . 'Z', // will start now
-            'duration'        =>  $meeting_data['duration'] ?? 30,
-            'password'        =>  mt_rand(), // random password
-            // 'timezone'		=> 'Africa/Cairo',
-            // 'agenda'		=> 'PHP Session',
-            'settings'        => [
-                'host_video'            => false,
-                'participant_video'        => true,
-                'cn_meeting'            => false,
-                'in_meeting'            => false,
-                'join_before_host'        => true,
-                'mute_upon_entry'        => true,
-                'watermark'                => false,
-                'use_pmi'                => false,
-                'approval_type'            => 1,
-                'registration_type'        => 1,
-                'audio'                    => 'voip',
-                'auto_recording'        => 'none',
-                'waiting_room'            => false
-            ]
-        ];
         try {
             $response = $client->request('POST', '/v2/users/me/meetings', [
                 "headers" => [
                     "Authorization" => "Bearer $accessToken"
                 ],
-                'json' => $json,
+                'json' => $meeting_data,
             ]);
 
             $data = json_decode($response->getBody());
@@ -141,7 +117,7 @@ class Zoom
                     ],
                 ]);
                 $this->updateAccessToken($response->getBody());
-                return $this->create_meeting();
+                return $this->createMeeting();
             } else {
                 echo $e->getMessage();
             }
