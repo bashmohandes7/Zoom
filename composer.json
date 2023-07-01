@@ -15,7 +15,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Bashmohandes7\\Zoom\\":"src/"
+            "Bashmohandes7\\ZoomService\\":"src/"
         },
         "files": [
             "src/helpers.php"
