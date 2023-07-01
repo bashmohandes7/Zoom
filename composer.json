@@ -23,10 +23,10 @@
         "extra": {
             "laravel": {
                 "providers": [
-                    "Bashmohandes7\\Zoom\\ZoomServiceProvider"
+                    "Bashmohandes7\\ZoomService\\ZoomServiceProvider"
                 ],
                 "aliases": {
-                    "Zoom": "Bashmohandes7\\Zoom\\Facade"
+                    "Zoom": "Bashmohandes7\\ZoomService\\Zoom"
                 }
             }
         }

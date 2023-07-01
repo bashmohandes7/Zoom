@@ -1,6 +1,6 @@
 <?php
 
-namespace Bashmohandes7\Zoom;
+namespace Bashmohandes7\ZoomService;
 
 use Illuminate\Support\ServiceProvider;
 
