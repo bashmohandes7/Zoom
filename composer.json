@@ -2,6 +2,7 @@
     "name": "bashmohandes7/laravel-zoom-package",
     "description": "sample package for laravel applications to integrate with Zoom",
     "type": "library",
+    "minimum-stability": "dev",
     "require": {
         "guzzlehttp/guzzle": "7.7.x-dev"
     },
@@ -12,7 +13,6 @@
             "email": "diaaemad1@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Bashmohandes7\\ZoomService\\":"src/"
