@@ -16,18 +16,18 @@
     "autoload": {
         "psr-4": {
             "Bashmohandes7\\ZoomService\\":"src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ],
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "Bashmohandes7\\ZoomService\\ZoomServiceProvider"
-                ],
-                "aliases": {
-                    "Zoom": "Bashmohandes7\\ZoomService\\Zoom"
-                }
+        }
+    },
+    "files": [
+        "src/helpers.php"
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bashmohandes7\\ZoomService\\ZoomServiceProvider"
+            ],
+            "aliases": {
+                "Zoom": "Bashmohandes7\\ZoomService\\Zoom"
             }
         }
     }
