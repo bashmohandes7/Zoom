@@ -2,27 +2,11 @@
 
 namespace Bashmohandes7\ZoomService;
 
-use bashmohandes7\Zoom\Models\ZoomOauth;
+use bashmohandes7\ZoomService\Models\ZoomOauth;
 use GuzzleHttp\Client;
 
 class Zoom
 {
-    public const zoomUrl = getZoomUrl(); // Replace this with the actual value
-    public const zoomClientID = getZoomClinetId(); // Replace this with the actual value
-    public const zoomClientSecret = getZoomClinetSecret(); // Replace this with the actual value
-    public const zoomRedirectUrl = getZoomRedirectUrl();
-
-    public function checkConfigValue($configValue, $errorMessage)
-    {
-        if (empty($configValue)) {
-            throw new \Exception($errorMessage);
-        }
-
-        $this->checkConfigValue(self::zoomUrl, 'Please provide Zoom URL');
-        $this->checkConfigValue(self::zoomClientID, 'Please provide Zoom Client ID');
-        $this->checkConfigValue(self::zoomClientSecret, 'Please provide Zoom Client Secret');
-        $this->checkConfigValue(self::zoomRedirectUrl, 'Please provide Zoom Redirect Url');
-    }
     public function isTableEmpty()
     {
         $result = ZoomOauth::where('provider', 'zoom')
@@ -64,15 +48,15 @@ class Zoom
     public static function zoomCallback()
     {
         try {
-            $client = new Client(['base_uri' => self::zoomUrl]);
+            $client = new Client(['base_uri' => config('zoomconfig.base_url')]);
             $response = $client->request('POST', '/oauth/token', [
                 'headers' => [
-                    'Authorization' => 'Basic ' . base64_encode(self::zoomClientID . ':' . self::zoomClientSecret)
+                    'Authorization' => 'Basic ' . base64_encode(config('zoomconfig.client_id') . ':' . config('zoomconfig.client_secret')),
                 ],
                 'form_params' => [
                     'grant_type' => 'authorization_code',
                     'code' => request()->query('code'),
-                    'redirect_uri' => self::zoomRedirectUrl
+                    'redirect_uri' => config('zoomconfig.redirect_url'),
                 ],
             ]);
             $token = json_decode($response->getBody()->getContents(), true);
@@ -86,7 +70,7 @@ class Zoom
 
     public static function createMeeting($meeting_data = [])
     {
-        $client = new Client(['base_uri' => self::zoomUrl]);
+        $client = new Client(['base_uri' => config('zoomconfig.base_url')]);
 
         $arrToken = (new self())->getAccessToken();
         $accessToken = $arrToken->access_token;
@@ -109,7 +93,7 @@ class Zoom
                 $client = new Client(['base_uri' => 'https://zoom.us']);
                 $response = $client->request('POST', '/oauth/token', [
                     "headers" => [
-                        "Authorization" => "Basic " . base64_encode(self::zoomClientID . ':' . self::zoomClientSecret)
+                        "Authorization" => "Basic " . base64_encode(config('zoomconfig.client_id') . ':' . config('zoomconfig.client_secret'))
                     ],
                     'form_params' => [
                         "grant_type" => "refresh_token",

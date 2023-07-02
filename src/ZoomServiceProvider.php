@@ -8,6 +8,7 @@ class ZoomServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->publishes([
             __DIR__.'/config/zoomconfig.php' => config_path('zoomconfig.php'),
         ], 'zoomconfig');
