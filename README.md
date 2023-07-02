@@ -1,13 +1,7 @@
 
 # Zoom Package With Laravel
 
-sample package for laravel applications to integrate with Zoom
-
-# Hi, I'm Diaa Abdallah! 👋
-
-
-## 🚀 About Me
-I'm a Backend Developer...
+sample package for laravel applications to integrate with Zoom Oauth application.
 
 
 ## Installation
