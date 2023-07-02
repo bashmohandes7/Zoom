@@ -50,7 +50,7 @@ $url = "https://zoom.us/oauth/authorize?response_type=code&client_id=".CLIENT_ID
 <a href="<?php echo $url; ?>">Zoom Authorization</a>
 ```
 - Run the above file on the browser, click on the ‘Zoom Authorization’ link and complete the authorization.
-- you should see a success message and the access token would store in your zoom_oauth table.
+- you should see a success message and the access token would store in your zoom_oauths table.
 
 ## Redirect Url:
 - create a Route in web routes
