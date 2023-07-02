@@ -1,6 +1,6 @@
 <?php
 
-namespace Bashmohandes7\ZoomService\Models;
+namespace ZoomService\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

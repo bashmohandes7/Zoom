@@ -1,8 +1,8 @@
 <?php
 
-namespace Bashmohandes7\ZoomService;
+namespace ZoomService;
 
-use Bashmohandes7\ZoomService\Models\ZoomOauth;
+use ZoomService\Models\ZoomOauth;
 use GuzzleHttp\Client;
 
 class Zoom

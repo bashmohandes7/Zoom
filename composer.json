@@ -1,6 +1,6 @@
 {
-    "name": "bashmohandes7/laravel-zoom-package",
-    "description": "sample package for laravel applications to integrate with Zoom",
+    "name": "laravel/zoom-meeting",
+    "description": "sample package for laravel applications to integrate with Zoom Oauth application",
     "type": "library",
     "minimum-stability": "dev",
     "require": {},
@@ -13,16 +13,16 @@
     ],
     "autoload": {
         "psr-4": {
-            "Bashmohandes7\\ZoomService\\":"src/"
+            "ZoomService\\":"src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Bashmohandes7\\ZoomService\\ZoomServiceProvider"
+                "ZoomService\\ZoomServiceProvider"
             ],
             "aliases": {
-                "Zoom": "Bashmohandes7\\ZoomService\\Zoom"
+                "Zoom": "ZoomService\\Zoom"
             }
         }
     }
