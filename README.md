@@ -42,7 +42,7 @@ To run this package, you will need to add the following environment variables to
 ## How to use ?
 
 ### generate an authorization URL where a user can click and complete the authorization:
-- create a blade file that contains a link to complete the authorization
+-create a blade file that contains a link to complete the authorization
 ```bash
 $url = "https://zoom.us/oauth/authorize?response_type=code&client_id=".CLIENT_ID."&redirect_uri=".REDIRECT_URI.";
 ?>
@@ -50,7 +50,7 @@ $url = "https://zoom.us/oauth/authorize?response_type=code&client_id=".CLIENT_ID
 <a href="<?php echo $url; ?>">Zoom Authorization</a>
 ```
 - Run the above file on the browser, click on the ‘Zoom Authorization’ link and complete the authorization.
--you should see a success message and the access token would store in your zoom_oauth table.
+- you should see a success message and the access token would store in your zoom_oauth table.
 
 ## Redirect Url:
 - create a Route in web routes
@@ -63,7 +63,7 @@ Route::post('/callback',function(){
 
 ## Create Zoom Meeting
 ```bash
-- this function to create a zoom meeting , just pass meetinh data and settings params:
+- this function to create a zoom meeting , just pass meeting data and settings params:
 use Bashmohandes7\ZoomService\Zoom;
 $meetingData = [
   'topic' =>  'General Talk', // topic
