@@ -16,9 +16,6 @@
             "Bashmohandes7\\ZoomService\\":"src/"
         }
     },
-    "files": [
-        "src/helpers.php"
-    ],
     "extra": {
         "laravel": {
             "providers": [
