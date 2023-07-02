@@ -49,7 +49,7 @@ $url = "https://zoom.us/oauth/authorize?response_type=code&client_id=".CLIENT_ID
 ## Redirect Url:
 - create a Route in web routes
 ```bash
-use Bashmohandes7\ZoomService\Zoom;
+use ZoomService\Zoom;
 Route::post('/callback',function(){
   return Zoom::zoomCallback();
 });
@@ -58,7 +58,7 @@ Route::post('/callback',function(){
 ## Create Zoom Meeting
 ```bash
 - this function to create a zoom meeting , just pass meeting data and settings params:
-use Bashmohandes7\ZoomService\Zoom;
+use ZoomService\Zoom;
 $meetingData = [
   'topic' =>  'General Talk', // topic
             'type'            =>  2,
