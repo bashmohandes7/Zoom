@@ -1,5 +1,5 @@
 {
-    "name": "laravel/zoom-meeting",
+    "name": "diaa/laravel-zoom-meeting",
     "description": "sample package for laravel applications to integrate with Zoom Oauth application",
     "type": "library",
     "minimum-stability": "dev",
