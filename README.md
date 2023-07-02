@@ -68,7 +68,7 @@ use Bashmohandes7\ZoomService\Zoom;
 $meetingData = [
   'topic' =>  'General Talk', // topic
             'type'            =>  2,
-            'start_time'    => $date('Y-m-dTh:i:00') . 'Z', // will start now
+            'start_time'    => date('Y-m-dTh:i:00') . 'Z', // will start now
             'duration'        =>  40,
             'password'        =>  mt_rand(), // random password
             // 'timezone'		=> 'Africa/Cairo',
