@@ -2,7 +2,7 @@
 
 namespace Bashmohandes7\ZoomService;
 
-use bashmohandes7\ZoomService\Models\ZoomOauth;
+use Bashmohandes7\ZoomService\Models\ZoomOauth;
 use GuzzleHttp\Client;
 
 class Zoom
@@ -101,7 +101,7 @@ class Zoom
                     ],
                 ]);
                 (new self())->updateAccessToken($response->getBody());
-                return (new self())->createMeeting();
+                return (new self())->createMeeting($meeting_data = []);
             } else {
                 echo $e->getMessage();
             }
