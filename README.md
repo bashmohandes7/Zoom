@@ -9,7 +9,7 @@ sample package for laravel applications to integrate with Zoom Oauth application
 Install via composer
 
 ```bash
-  composer require bashmohandes7/laravel-zoom-package
+  composer require diaa/laravel-zoom-meeting
 ```
 
 run migration
