@@ -61,13 +61,13 @@ class Zoom
         }
     }
 
-    public function zoomCallback()
+    public static function zoomCallback()
     {
         try {
             $client = new Client(['base_uri' => self::zoomUrl]);
             $response = $client->request('POST', '/oauth/token', [
                 'headers' => [
-                    'Authorization' => 'Basic ' . base64_encode(self::zoomClinetId . ':' . self::zoomClinetSecret)
+                    'Authorization' => 'Basic ' . base64_encode(self::zoomClientID . ':' . self::zoomClientSecret)
                 ],
                 'form_params' => [
                     'grant_type' => 'authorization_code',
@@ -77,18 +77,18 @@ class Zoom
             ]);
             $token = json_decode($response->getBody()->getContents(), true);
 
-            $this->updateAccessToken(json_encode($token));
+            (new self())->updateAccessToken(json_encode($token));
             echo "Access token inserted successfully.";
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
     }
 
-    public function createMeeting($meeting_data = [])
+    public static function createMeeting($meeting_data = [])
     {
         $client = new Client(['base_uri' => self::zoomUrl]);
 
-        $arrToken = $this->getAccessToken();
+        $arrToken = (new self())->getAccessToken();
         $accessToken = $arrToken->access_token;
         try {
             $response = $client->request('POST', '/v2/users/me/meetings', [
@@ -105,7 +105,7 @@ class Zoom
             return $allData;
         } catch (\Exception $e) {
             if (401 == $e->getCode()) {
-                $refresh_token = $this->getRefreshToken();
+                $refresh_token = (new self())->getRefreshToken();
                 $client = new Client(['base_uri' => 'https://zoom.us']);
                 $response = $client->request('POST', '/oauth/token', [
                     "headers" => [
@@ -116,8 +116,8 @@ class Zoom
                         "refresh_token" => $refresh_token
                     ],
                 ]);
-                $this->updateAccessToken($response->getBody());
-                return $this->createMeeting();
+                (new self())->updateAccessToken($response->getBody());
+                return (new self())->createMeeting();
             } else {
                 echo $e->getMessage();
             }
