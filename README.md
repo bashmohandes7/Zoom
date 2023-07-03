@@ -41,7 +41,7 @@ To run this package, you will need to add the following environment variables to
 $url = "https://zoom.us/oauth/authorize?response_type=code&client_id=".CLIENT_ID."&redirect_uri=".REDIRECT_URI.";
 ?>
  
-<a href="<?php echo $url; ?>">Zoom Authorization</a>
+<a href="{{$url}}; ?>">Zoom Authorization</a>
 ```
 - Run the above file on the browser, click on the ‘Zoom Authorization’ link and complete the authorization.
 - you should see a success message and the access token would store in your zoom_oauths table.
